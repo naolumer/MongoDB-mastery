@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 // Define schema
 const movieSchema = new mongoose.Schema({
     name:{type: String, required:true, trim:true },
-    rating:{type:Number, required:true, min:1,max:5},
+    rating:{type:Number, required:true, min:1,max:10},
     money: {
         type:mongoose.Decimal128,
         required:true,
@@ -11,7 +11,7 @@ const movieSchema = new mongoose.Schema({
     },
     genre: {type:Array},
     isActive: {type:Boolean},
-    commnets: [
+    comments: [
         {value: {type: String}, published: {type:Date,default:Date.now}},
     ],
 });
@@ -19,4 +19,56 @@ const movieSchema = new mongoose.Schema({
 // Creating Model
 const movieModel =mongoose.model("Movie", movieSchema);
 
-export default movieModel
+// creating new document
+
+const insertManyDoc = async ()=> {
+    try {
+        // creating new document
+        const m1 = new movieModel({
+            name: "Extraction 2",
+            rating: 4,
+            money: 4333,
+            genre: ["action","adventure"],
+            isActive: true,
+            comments: [{value:"That was an awesome movie"}]
+        });
+        const m2 = new movieModel({
+            name: "Coco",
+            rating: 8,
+            money: 23330,
+            genre: ["animation","adventure"],
+            isActive: true,
+            comments: [{value:"brilliant and thought provoking movie. deserves an oscar"}]
+        });
+        const m3 = new movieModel({
+            name: "Kungfu Panda",
+            rating: 6,
+            money: 10000,
+            genre: ["action","adventure"],
+            isActive: false,
+            comments: [{value:"enjoyed watching it all the 2 hours"}]
+        });
+        const m4 = new movieModel({
+            name: "Spider-Man",
+            rating: 7,
+            money: 340000,
+            genre: ["action","Romance"],
+            isActive: true,
+            comments: [{value:"The best in the business"}]
+        });
+        const m5 = new movieModel({
+            name: "Sopranos",
+            rating: 8,
+            money: 78000,
+            genre: ["thriller","crime"],
+            isActive: true,
+            comments: [{value:"i don't think i have seen a movie this good in the past decade"}]
+        });
+        const result = await movieModel.insertMany([m1,m2,m3,m4,m5])
+        console.log(result)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export {insertManyDoc}
