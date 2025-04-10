@@ -64,7 +64,15 @@ const insertManyDoc = async ()=> {
             isActive: true,
             comments: [{value:"i don't think i have seen a movie this good in the past decade"}]
         });
-        const result = await movieModel.insertMany([m1,m2,m3,m4,m5])
+        const m6 = new movieModel({
+            name: "The Wire",
+            rating: 8,
+            money: 78000,
+            genre: ["thriller","crime"],
+            isActive: true,
+            comments: [{value:"Good cinematography and storytelling i give it a solid 8/10."}]
+        });
+        const result = await movieModel.insertMany([m1,m2,m3,m4,m5,m6])
         console.log(result)
     } catch (error) {
         console.log(error)
