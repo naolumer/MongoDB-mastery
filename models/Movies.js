@@ -92,7 +92,7 @@ const insertManyDoc = async ()=> {
 
 const deleteById = async ()=>{
     try {
-    const movie = await movieModel.find({name:"World War-Z"})
+    const movie = await movieModel.findOneAndUpdate({name:"World War-Z"},{isActive:false})
     console.log(movie)
     } catch(error){
         console.log(error)
