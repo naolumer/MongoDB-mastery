@@ -83,7 +83,16 @@ const insertManyDoc = async ()=> {
             comments: [{value:"i don't think i have seen a movie this good in the past decade. so scary"}],
             year: 2002
         });
-        const result = await movieModel.insertMany([m1,m2,m3,m4,m5,m6,m7])
+        const m8 = new movieModel({
+            name: "TAKEN-II",
+            rating: 8.9,
+            money: 780000,
+            genre: ["thriller"],
+            isActive: true,
+            comments: [{value:"i don't think i have seen a movie this good in the past decade. so scary"}],
+            year: 2004
+        });
+        const result = await movieModel.insertMany([m1,m2,m3,m4,m5,m6,m7,m8])
         console.log(result)
     } catch (error) {
         console.log(error)
