@@ -90,4 +90,14 @@ const insertManyDoc = async ()=> {
     }
 }
 
-export {insertManyDoc}
+const deleteById = async ()=>{
+    try {
+    const movie = await movieModel.findByIdAndDelete('67f811ce946c007509598529')
+    console.log("movie deleted")
+    } catch(error){
+        console.log(error)
+    }
+    
+}
+
+export {insertManyDoc,deleteById}
