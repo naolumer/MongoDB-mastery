@@ -73,7 +73,17 @@ const insertManyDoc = async ()=> {
             isActive: true,
             comments: [{value:"Good cinematography and storytelling i give it a solid 8/10."}]
         });
-        const result = await movieModel.insertMany([m1,m2,m3,m4,m5,m6])
+
+        const m7 = new movieModel({
+            name: "World War-Z",
+            rating: 8.9,
+            money: 780000,
+            genre: ["thriller","Horror"],
+            isActive: true,
+            comments: [{value:"i don't think i have seen a movie this good in the past decade. so scary"}],
+            year: 2002
+        });
+        const result = await movieModel.insertMany([m1,m2,m3,m4,m5,m6,m7])
         console.log(result)
     } catch (error) {
         console.log(error)
