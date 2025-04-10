@@ -92,8 +92,8 @@ const insertManyDoc = async ()=> {
 
 const deleteById = async ()=>{
     try {
-    const movie = await movieModel.findByIdAndDelete('67f811ce946c007509598529')
-    console.log("movie deleted")
+    const movie = await movieModel.find({name:"World War-Z"})
+    console.log(movie)
     } catch(error){
         console.log(error)
     }
