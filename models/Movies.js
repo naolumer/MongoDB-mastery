@@ -14,6 +14,7 @@ const movieSchema = new mongoose.Schema({
     comments: [
         {value: {type: String}, published: {type:Date,default:Date.now}},
     ],
+    year: {type:Date, default:Date.now()}
 });
 
 // Creating Model
