@@ -17,14 +17,13 @@ const movieSchema = new mongoose.Schema({
     year: {type:Date, default:Date.now()}
 });
 
-// Creating Model
+
 const movieModel =mongoose.model("Movie", movieSchema);
 
-// creating new document
 
 const insertManyDoc = async ()=> {
     try {
-        // creating new document
+
         const m1 = new movieModel({
             name: "Extraction 2",
             rating: 4,
