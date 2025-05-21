@@ -19,8 +19,6 @@ const movieSchema = new mongoose.Schema({
 
 
 const movieModel =mongoose.model("Movie", movieSchema);
-
-
 const insertManyDoc = async ()=> {
     try {
 
@@ -122,8 +120,7 @@ const deleteById = async ()=>{
     console.log(movie)
     } catch(error){
         console.log(error)
-    }
-    
+    } 
 }
 
 export {insertManyDoc,deleteById}
